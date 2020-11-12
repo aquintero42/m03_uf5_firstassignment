@@ -12,64 +12,210 @@ import java.util.List;
  * @author pep
  */
 public class MatcherImpl implements Matcher {
-    
+    Persona persona;
     Persona match;
-    
+    // persona == . && candidatos.get(i) == .
     @Override
     public Persona matches(Persona persona, List<Persona> candidatos) {
         for(int i= 0; i< candidatos.size(); i++) {
-            
-            if (candidatos.get(i).equals(Sexo.HOMBRE)) {
-                if(candidatos.get(i).equals(OrientacionSexual.GAY)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.get(i).equals(OrientacionSexual.HETERO)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.get(i).equals(OrientacionSexual.BISEXUAL)) {
-                    match = candidatos.get(i);
-                }                
-            } else if (candidatos.get(i).equals(Sexo.MUJER)) {
-                if(candidatos.get(i).equals(OrientacionSexual.LESBIANA)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.get(i).equals(OrientacionSexual.HETERO)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.get(i).equals(OrientacionSexual.BISEXUAL)) {
-                    match = candidatos.get(i);
-                }                   
-            }
-            /*if( candidatos.equals(Sexo.HOMBRE)) {
-                if(candidatos.equals(OrientacionSexual.GAY)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionSexual.HETERO)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionSexual.BISEXUAL)) {
-                    match = candidatos.get(i);
+            if (persona.getSexo() == Sexo.HOMBRE && candidatos.get(i).getSexo() == Sexo.HOMBRE) {
+                if (persona.getOrientacionSexual() == OrientacionSexual.BISEXUAL && candidatos.get(i).getOrientacionSexual() == OrientacionSexual.BISEXUAL) {
+                    if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA) || (persona.getOrientacionPolitica() == OrientacionPolitica.DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.DERECHA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }
+                    } else if (persona.getOrientacionPolitica() == OrientacionPolitica.CENTRO && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.CENTRO) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                        
+                    } else if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA) || (persona.getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                    
+                    }  
+                } else if (persona.getOrientacionSexual() == OrientacionSexual.HETERO && candidatos.get(i).getOrientacionSexual() == OrientacionSexual.HETERO) {
+                    if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA) || (persona.getOrientacionPolitica() == OrientacionPolitica.DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.DERECHA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }
+                    } else if (persona.getOrientacionPolitica() == OrientacionPolitica.CENTRO && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.CENTRO) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                        
+                    } else if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA) || (persona.getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                    
+                    }                 
+                } else if (persona.getOrientacionSexual() == OrientacionSexual.GAY && candidatos.get(i).getOrientacionSexual() == OrientacionSexual.GAY) {
+                    if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA) || (persona.getOrientacionPolitica() == OrientacionPolitica.DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.DERECHA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }
+                    } else if (persona.getOrientacionPolitica() == OrientacionPolitica.CENTRO && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.CENTRO) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                        
+                    } else if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA) || (persona.getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                    
+                    }                 
                 }
-            } else if (candidatos.equals(Sexo.MUJER)) {
-                if(candidatos.equals(OrientacionSexual.LESBIANA)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionSexual.HETERO)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionSexual.BISEXUAL)) {
-                    match = candidatos.get(i);
-                }                
-            } else if (candidatos.equals(OrientacionPolitica.EXTREMA_DERECHA)) {
-                if(candidatos.equals(OrientacionPolitica.EXTREMA_DERECHA)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionPolitica.DERECHA)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionPolitica.CENTRO)) {
-                    match = candidatos.get(i);
-                }                 
-            } else if (candidatos.equals(OrientacionPolitica.EXTREMA_IZQUIERDA)) {
-                if(candidatos.equals(OrientacionPolitica.EXTREMA_IZQUIERDA)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionPolitica.IZQUIERDA)) {
-                    match = candidatos.get(i);
-                } else if (candidatos.equals(OrientacionPolitica.CENTRO)) {
-                    match = candidatos.get(i);
-                }              
-            }*/
-        return match;
+            } else if (persona.getSexo() == Sexo.MUJER && candidatos.get(i).getSexo() == Sexo.MUJER) {
+                if (persona.getOrientacionSexual() == OrientacionSexual.BISEXUAL && candidatos.get(i).getOrientacionSexual() == OrientacionSexual.BISEXUAL) {
+                    if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA) || (persona.getOrientacionPolitica() == OrientacionPolitica.DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.DERECHA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }
+                    } else if (persona.getOrientacionPolitica() == OrientacionPolitica.CENTRO && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.CENTRO) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                        
+                    } else if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA) || (persona.getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                    
+                    }  
+                } else if (persona.getOrientacionSexual() == OrientacionSexual.HETERO && candidatos.get(i).getOrientacionSexual() == OrientacionSexual.HETERO) {
+                    if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA) || (persona.getOrientacionPolitica() == OrientacionPolitica.DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.DERECHA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }
+                    } else if (persona.getOrientacionPolitica() == OrientacionPolitica.CENTRO && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.CENTRO) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                        
+                    } else if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA) || (persona.getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                    
+                    }                 
+                } else if (persona.getOrientacionSexual() == OrientacionSexual.GAY && candidatos.get(i).getOrientacionSexual() == OrientacionSexual.GAY) {
+                    if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_DERECHA) || (persona.getOrientacionPolitica() == OrientacionPolitica.DERECHA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.DERECHA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }
+                    } else if (persona.getOrientacionPolitica() == OrientacionPolitica.CENTRO && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.CENTRO) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                        
+                    } else if ( (persona.getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.EXTREMA_IZQUIERDA) || (persona.getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA && candidatos.get(i).getOrientacionPolitica() == OrientacionPolitica.IZQUIERDA) ) {
+                        if ( (persona.getFormacion() == Formacion.DOCTORADO && candidatos.get(i).getFormacion() == Formacion.DOCTORADO) || (persona.getFormacion() == Formacion.CATEDRATICO && candidatos.get(i).getFormacion() == Formacion.CATEDRATICO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.GRADO_SUPERIOR && candidatos.get(i).getFormacion() == Formacion.GRADO_SUPERIOR) || (persona.getFormacion() == Formacion.GRADO_MEDIO && candidatos.get(i).getFormacion() == Formacion.GRADO_MEDIO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.BACHILLERATO && candidatos.get(i).getFormacion() == Formacion.BACHILLERATO) || (persona.getFormacion() == Formacion.GRADO && candidatos.get(i).getFormacion() == Formacion.GRADO) ) {
+                            match = candidatos.get(i);
+                        } else if ( (persona.getFormacion() == Formacion.SECUNDARIA && candidatos.get(i).getFormacion() == Formacion.SECUNDARIA) || (persona.getFormacion() == Formacion.PRIMARIA && candidatos.get(i).getFormacion() == Formacion.PRIMARIA) ) {
+                            match = candidatos.get(i);
+                        }                    
+                    }                 
+                }
+            }
+        //return match;
         }
         return match;
     }
