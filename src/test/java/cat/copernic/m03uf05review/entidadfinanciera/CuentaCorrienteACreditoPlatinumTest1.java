@@ -35,7 +35,7 @@ public class CuentaCorrienteACreditoPlatinumTest1 {
     
     @Before
     public void setUp() {
-        instance = new CuentaCorrienteACreditoGold("Adrian",10000.0);
+        instance = new CuentaCorrienteACreditoPlatinum("Adrian",10000.0);
     }
     
     @After
