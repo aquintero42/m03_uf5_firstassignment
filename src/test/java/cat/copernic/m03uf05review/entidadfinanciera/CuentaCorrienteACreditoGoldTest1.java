@@ -62,4 +62,22 @@ public class CuentaCorrienteACreditoGoldTest1 {
         assertEquals(12000.0, instance.getSaldo(), 0.01);
     }
     
+    @Test
+    public void testAbona2() {
+        instance.abona(2000.0);
+        assertNotEquals(9995.0, instance.getSaldo(), 0.01);
+    }
+    
+    @Test
+    public void testIngresa2() {
+        instance.ingresa(3000.0);
+        assertNotEquals(13000.0, instance.getSaldo(), 0.01);        
+    }
+    
+    @Test
+    public void testErrores2() {
+        instance.abona(15000.0);
+        assertNotEquals(-5000.0, instance.getSaldo(), 0.01);
+    }    
+    
 }
